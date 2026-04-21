@@ -41,3 +41,12 @@ async function deleteTask(id){
 
 //Initial load
 loadTasks();
+
+//edit tasks
+async function editTask(id, currentTitle) {
+    const newTitle = prompt("Edit Task Title:", currentTitle);
+    if (newTitle && newTitle !== currentTitle) {
+        await axios.put(`${API}/${id}`, { title: newTitle });
+        loadTasks();
+    }
+}
